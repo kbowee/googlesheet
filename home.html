@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-signin-client_id" content="125255811929-u9ns9ph0ojso81uk49qtivtsu6360g58.apps.googleusercontent.com"> 
+    <title>Index</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-brand">My Website</div>
+            <ul class="navbar-nav">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+            </ul>
+            <div class="navbar-actions">
+                <a href="#" id="login-link">Log in</a>
+                <a href="#" class="btn-primary" id="get-started">Get Started</a>
+            </div>
+            <div class="theme-switch-wrapper">
+                <label class="theme-switch" for="checkbox">
+                    <input type="checkbox" id="checkbox" />
+                    <span class="slider round"></span>
+                </label>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<main class="container">
+    <section>
+        <h1>Spreadsheet API</h1>
+        <p>Using API, in integrating the system. Inputting Datas in the information form then it will send to api to insert the datas in the Spreadsheet</p>
+    </section>
+    
+    <section class="boxes-container">
+        <div class="box">
+            <h2>System integration</h2>
+            <p>Integrating systems using API.</p>
+        </div>
+        <div class="box">
+            <h2>Core teams</h2>
+            <p>Front End - Pestaño</p>
+            <p>Backend - Tingting</p>
+            <p>Backend - Requinto</p>
+        </div>
+    </section>
+</main>
+
+<div id="overlay" class="overlay">
+    <div class="overlay-content">
+        <span class="close" id="close-overlay">&times;</span>
+        <h2>Sign Up</h2>
+        <p>Sign up with your email or continue with Google:</p>
+        <button class="google-signup" id="google-login" onclick="signInWithGoogle()">Continue with Google</button>
+        <form action="#" id="signup-form">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+            <button type="submit" class="btn-primary">Create Account</button>
+        </form>
+        <p>Already have an account? <a href="#" id="login-link-overlay">Log in</a></p>
+    </div>
+</div>
+
+<div id="overlay-login" class="overlay-login">
+    <div class="overlay-login-content">
+        <span class="close" id="close-overlay-login">&times;</span>
+        <h2>Login</h2>
+        <p>Login with your email or continue with Google:</p>
+        <button class="google-signup" id="google-login" onclick="signInWithGoogle()">Continue with Google</button>
+        <form action="#" id="login-form">
+            <label for="login-email">Email:</label>
+            <input type="email" id="login-email" name="login-email" required>
+            <label for="login-password">Password:</label>
+            <input type="password" id="login-password" name="login-password" required>
+            <button type="submit" class="btn-primary">Login</button>
+        </form>
+    </div>
+</div>
+<script>
+    function onSignIn(googleUser) {
+        // Retrieve user profile information
+        var profile = googleUser.getBasicProfile();
+        console.log('ID: ' + profile.getId()); // Do something with the user's ID
+        console.log('Name: ' + profile.getName()); // Do something with the user's name
+        console.log('Email: ' + profile.getEmail()); // Do something with the user's email
+
+        // Redirect to spreadsheet.html
+        window.location.href = "spreadsheet.html";
+    }
+
+    function onFailure(error) {
+        console.log(error);
+    }
+
+    function signInWithGoogle() {
+        // Sign in with Google
+        gapi.auth2.getAuthInstance().signIn().then(onSignIn, onFailure);
+    }
+</script>
+
+<script src="https://apis.google.com/js/platform.js" async defer></script>
+<script src="script.js"></script>
+</body>
+</html>
